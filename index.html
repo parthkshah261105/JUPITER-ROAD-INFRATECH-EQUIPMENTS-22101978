@@ -1,105 +1,266 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JUPITER ROAD INFRATECH EQUIPMENTS</title>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;color:#222}
-header{background:#171717;color:white;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.logo{font-size:38px;font-weight:900;letter-spacing:2px}
-.logo span{color:#e00016}
-nav a{color:white;text-decoration:none;margin:10px;font-weight:bold}
-.hero{text-align:center;background:#eee;padding:75px 20px}
-.hero h1{font-size:38px;margin-bottom:20px}
-.hero h1 span{color:#e00016}
-.hero p{font-size:19px;line-height:1.7}
-.contact{background:#e00016;color:white;padding:25px;text-align:center}
-.contact a{color:white;text-decoration:none;font-weight:bold}
-section{padding:55px 7%}
-h2{text-align:center;margin-bottom:25px}
-.intro{text-align:center;line-height:1.8}
-.products{background:#f2f2f2}
-.product-links{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
-.product-links a{background:#171717;color:white;padding:16px 25px;text-decoration:none;border-radius:4px}
-.product-links a:hover{background:#e00016}
-.address{text-align:center;line-height:1.9}
-footer{background:#171717;color:white;text-align:center;padding:35px 15px;line-height:2}
-@media(max-width:600px){
-header{justify-content:center;gap:15px}
-.hero h1{font-size:27px}
-nav{text-align:center}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUPITER | Road Infratech Equipments</title>
+    <!-- Tailwind CSS for strict layout replication -->
+    <script src="https://tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#DC2626',
+                        brandBlack: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for VÖGELE style UI icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        .filter-transition { transition: all 0.3s ease-in-out; }
+    </style>
 </head>
+<body class="bg-white text-brandBlack font-sans antialiased">
 
-<body>
+    <!-- TOP META STRIP (Business Card Verified Data) -->
+    <div class="border-b border-gray-200 py-2.5 bg-white px-4 md:px-8 flex flex-col md:flex-row justify-between items-center text-xs font-bold text-gray-700">
+        <div><i class="fa-solid fa-file-invoice-dollar text-brandRed mr-1"></i> GSTIN: 24BASPS3109M1Z7</div>
+        <div class="flex space-x-6 mt-1 md:mt-0">
+            <a href="tel:+919909975881" class="hover:text-brandRed"><i class="fa-solid fa-phone text-brandRed mr-1"></i> Mob. +91-99099 75881</a>
+        </div>
+    </div>
 
-<header>
-<div class="logo">JUPIT<span>E</span>R</div>
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="road-pavers.html">Products</a>
-<a href="contact.html">Contact</a>
-</nav>
-</header>
+    <!-- MAIN BRAND NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm px-4 md:px-8 py-4 flex justify-between items-center">
+        <!-- 2nd Photo Brand Alignment Exact Graphic Typography -->
+        <div class="flex flex-col">
+            <div class="text-4xl md:text-5xl font-black tracking-tighter text-brandBlack select-none flex items-center">
+                JUPIT<span class="text-brandRed flex flex-col justify-center leading-none text-2xl font-extrabold mx-0.5"><span class="h-1 w-5 bg-brandRed my-0.5"></span><span class="h-1 w-5 bg-brandRed my-0.5"></span><span class="h-1 w-5 bg-brandRed my-0.5"></span></span>R
+            </div>
+            <div class="text-[10px] md:text-xs font-black tracking-widest text-brandRed mt-0.5 uppercase">
+                Road Infratech Equipments
+            </div>
+        </div>
+        
+        <nav class="hidden lg:flex space-x-8 font-bold text-sm uppercase text-gray-700">
+            <a href="#" class="text-brandRed border-b-2 border-brandRed pb-1">Products</a>
+            <a href="#" class="hover:text-brandRed transition">Applications</a>
+            <a href="#" class="hover:text-brandRed transition">Parts and Service</a>
+            <a href="#" class="hover:text-brandRed transition">About Us</a>
+        </nav>
 
-<div class="hero">
-<h1>JUPITER <span>ROAD INFRATECH</span> EQUIPMENTS</h1>
-<p>
-Manufacturer & Exporters of<br>
-<strong>ASPHALT MIXING PLANT & ROAD CONSTRUCTION EQUIPMENTS</strong>
-</p>
-</div>
+        <div class="flex items-center space-x-4">
+            <button class="text-gray-700 hover:text-brandRed"><i class="fa-solid fa-magnifying-glass text-lg"></i></button>
+            <a href="https://wa.me" class="bg-brandRed text-white px-5 py-2 rounded font-black hover:bg-brandBlack transition text-xs uppercase tracking-wider">Get A Quote</a>
+        </div>
+    </header>
 
-<div class="contact">
-<h2>Contact Us</h2>
-<p>Mob. <a href="tel:+919909975881">+91 99099 75881</a></p>
-</div>
+    <!-- HERO PA VING BANNER -->
+    <section class="relative bg-zinc-50 border-b border-gray-200 min-h-[380px] flex items-center px-4 md:px-12">
+        <div class="absolute inset-0 bg-cover bg-center opacity-10 flex items-center justify-end pr-12 pointer-events-none">
+            <i class="fa-solid fa-road text-[200px] text-zinc-300"></i>
+        </div>
+        <div class="relative z-10 max-w-xl py-8">
+            <h1 class="text-3xl md:text-4xl font-black text-brandBlack uppercase tracking-tight mb-2">Road Pavers</h1>
+            <div class="w-20 h-1 bg-brandRed mb-4"></div>
+            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center space-x-2">
+                <span>Home</span> <i class="fa-solid fa-chevron-right text-[8px]"></i> 
+                <span class="text-brandRed">JUPITER Products</span> <i class="fa-solid fa-chevron-right text-[8px]"></i> 
+                <span class="text-brandBlack">Road Pavers</span>
+            </div>
+        </div>
+    </section>
 
-<section>
-<h2>Welcome to JUPITER</h2>
-<p class="intro">
-Welcome to JUPITER ROAD INFRATECH EQUIPMENTS.
-We are engaged in asphalt mixing plants and road
-construction equipment. Explore our equipment range
-and contact us for business enquiries.
-</p>
-</section>
+    <!-- THE RIGHT PAVER TEXT SECTION -->
+    <section class="max-w-7xl mx-auto px-4 md:px-8 py-10">
+        <h2 class="text-2xl font-black text-brandBlack mb-3">The right paver for every application</h2>
+        <p class="text-gray-600 max-w-5xl text-sm leading-relaxed">
+            The extensive portfolio of <strong class="text-brandBlack">JUPITER</strong> pavers is subdivided into five product classes: the Mini, Compact, Universal, Highway, and Special Class. These cover a range of pave widths from 25 cm to 18 m (10 in to 59 ft 1 in). The road pavers of all five classes offer a variety of characteristic equipment options and screeds. Thanks to this, they ideally fulfill the needs of customers on construction projects around the globe.
+        </p>
+    </section>
 
-<section class="products">
-<h2>Our Product Categories</h2>
-<div class="product-links">
-<a href="road-pavers.html">Road Pavers</a>
-<a href="mini-class.html">Mini Class</a>
-<a href="compact-class.html">Compact Class</a>
-<a href="universal-class.html">Universal Class</a>
-<a href="highway-class.html">Highway Class</a>
-<a href="special-class.html">Special Class</a>
-</div>
-</section>
+    <!-- MAIN PRODUCT CONTROLS AREA -->
+    <main class="max-w-7xl mx-auto px-4 md:px-8 pb-20 relative flex flex-col lg:flex-row gap-6 items-start">
+        
+        <!-- SIDEBAR TOGGLE BUTTON -->
+        <div class="w-full lg:w-auto mb-4 lg:mb-0">
+            <button onclick="toggleFilterSidebar()" id="filterTriggerBtn" class="flex items-center space-x-2 bg-brandBlack text-white px-4 py-2.5 rounded font-black text-xs uppercase tracking-wider hover:bg-brandRed transition shadow">
+                <i class="fa-solid fa-sliders"></i>
+                <span id="filterBtnText">Open product filter</span>
+            </button>
+        </div>
 
-<section>
-<h2>Company Address</h2>
-<p class="address">
-No. 215, 2nd Floor, Mahadev Complex,<br>
-Near Ramol Police Station,<br>
-C.T.M.-Ramol Road, Ramol,<br>
-Ahmedabad - 382449, Gujarat, India.<br><br>
-GSTIN: 24BASPS3109M1Z7
-</p>
-</section>
+        <!-- REPLICATED FILTER CONTENT CONTAINER -->
+        <aside id="filterSidebar" class="w-full lg:w-64 bg-zinc-50 border border-gray-200 rounded p-5 hidden filter-transition mt-4">
+            <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
+                <h3 class="font-black text-xs uppercase tracking-wider text-brandBlack">Close product filter</h3>
+            </div>
 
-<footer>
-<h2>JUPITER ROAD INFRATECH EQUIPMENTS</h2>
-Manufacturer & Exporters of Road Construction Equipment<br>
-Mobile: +91 99099 75881<br>
-© 2026 JUPITER. All Rights Reserved.
-</footer>
+            <!-- Paver Type Options -->
+            <div class="mb-5">
+                <h4 class="font-bold text-xs uppercase text-gray-700 mb-2 flex items-center justify-between cursor-pointer">
+                    <span>Paver type:</span> <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </h4>
+                <div class="flex gap-2">
+                    <button class="bg-gray-200 text-gray-800 text-[10px] font-bold px-3 py-1 rounded">Tracked paver (0)</button>
+                    <button class="bg-gray-200 text-gray-800 text-[10px] font-bold px-3 py-1 rounded">Wheeled paver (0)</button>
+                </div>
+            </div>
 
-</body>
-</html>
+            <!-- Paving Width Interactive Dynamic Layout -->
+            <div class="mb-5">
+                <h4 class="font-bold text-xs uppercase text-gray-700 mb-1">Paving width, max.:</h4>
+                <input type="range" class="w-full accent-brandRed cursor-pointer">
+                <div class="flex justify-between text-[10px] font-bold text-gray-500"><span>5 ft 11 in</span> <span>59 ft 1 in</span></div>
+            </div>
+
+            <!-- Metric Indian Output Rate Selector -->
+            <div class="mb-5">
+                <h4 class="font-bold text-xs uppercase text-gray-700 mb-1">Maximum laydown rate:</h4>
+                <input type="range" class="w-full accent-brandRed cursor-pointer">
+                <div class="flex justify-between text-[10px] font-bold text-gray-500"><span>22 TPH</span> <span>1,985 TPH</span></div>
+            </div>
+
+            <!-- Basic Width Metric -->
+            <div class="mb-5">
+                <h4 class="font-bold text-xs uppercase text-gray-700 mb-1">Basic width:</h4>
+                <input type="range" class="w-full accent-brandRed cursor-pointer">
+                <div class="flex justify-between text-[10px] font-bold text-gray-500"><span>2 ft 11 in</span> <span>10 ft</span></div>
+            </div>
+
+            <!-- Product Category Subgroups -->
+            <div class="mb-5">
+                <h4 class="font-bold text-xs uppercase text-gray-700 mb-2">Classes:</h4>
+                <div class="flex flex-col gap-1.5 text-[11px] font-bold text-gray-600">
+                    <label class="flex items-center space-x-2"><input type="checkbox" class="accent-brandRed"> <span>Mini Class (0)</span></label>
+                    <label class="flex items-center space-x-2"><input type="checkbox" class="accent-brandRed"> <span>Compact Class (0)</span></label>
+                    <label class="flex items-center space-x-2"><input type="checkbox" class="accent-brandRed"> <span>Universal Class (0)</span></label>
+                    <label class="flex items-center space-x-2"><input type="checkbox" class="accent-brandRed"> <span>Highway Class (0)</span></label>
+                    <label class="flex items-center space-x-2"><input type="checkbox" class="accent-brandRed"> <span>Special Class (0)</span></label>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-3 border-t border-gray-200 text-[10px] font-bold">
+                <span class="text-gray-500">Your selection: 14 products</span>
+                <button onclick="resetFilters()" class="text-brandRed uppercase">Reset filter</button>
+            </div>
+        </aside>
+
+        <!-- CATALOG SYSTEM GRID -->
+        <div id="productsMainGrid" class="flex-1 w-full filter-transition">
+            
+            <!-- CLASS HEADER 1 -->
+            <div class="mb-6 border-b border-gray-200 pb-2 mt-4">
+                <h3 class="text-xl font-black text-brandBlack uppercase tracking-tight">Mini Class</h3>
+                <p class="text-xs text-gray-500 mt-1">Small and efficient: The Mini Class encompasses JUPITER’s small pavers, which are designed both for repair work and for the construction of cycle paths, footpaths...</p>
+            </div>
+
+            <!-- CLASS HEADER 2 -->
+            <div class="mb-6 border-b border-gray-200 pb-2 mt-10">
+                <h3 class="text-xl font-black text-brandBlack uppercase tracking-tight">Compact Class</h3>
+                <p class="text-xs text-gray-500 mt-1">Compact and maneuverable: these are the hallmarks of Compact Class pavers. JUPITER compact pavers are particularly suitable for small to mid-sized construction jobs...</p>
+            </div>
+
+            <!-- Grid for Compact Class -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <!-- Machine 4 -->
+                <div class="border border-gray-200 rounded p-4 bg-white flex flex-col justify-between hover:shadow-sm">
+                    <div>
+                        <div class="w-full h-40 bg-zinc-50 border border-dashed border-zinc-200 rounded flex items-center justify-center text-zinc-400 mb-3 text-xs font-bold uppercase tracking-wider">[Upload SUPER 800-5 P Image]</div>
+                        <div class="flex items-center space-x-2 mb-1"><input type="checkbox" class="accent-brandRed"><span class="text-[10px] font-bold text-gray-500 uppercase">Compare</span></div>
+                        <h4 class="text-base font-black text-brandBlack uppercase">SUPER 800-5 P</h4>
+                        <table class="w-full text-[11px] text-gray-600 mt-2 border-t border-gray-100">
+                            <tr class="border-b border-gray-50"><td class="py-1">Nominal output</td><td class="text-right font-bold text-brandBlack">74 hp</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Basic width</td><td class="text-right font-bold text-brandBlack">4 ft 7 in</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Paving width, max.</td><td class="text-right font-bold text-brandBlack">11 ft 5 in</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Maximum laydown rate</td><td class="text-right font-bold text-brandBlack">330 TPH</td></tr>
+                        </table>
+                    </div>
+                    <div class="mt-4 flex flex-col gap-2">
+                        <span class="text-[10px] text-gray-500 font-bold"><i class="fa-solid fa-file-pdf text-brandRed mr-1"></i> Highlights Flyer (PDF)</span>
+                        <button class="w-full bg-brandBlack text-white py-2 text-xs font-black uppercase tracking-wider hover:bg-brandRed transition">View product</button>
+                    </div>
+                </div>
+
+                <!-- Machine 5 -->
+                <div class="border border-gray-200 rounded p-4 bg-white flex flex-col justify-between hover:shadow-sm">
+                    <div>
+                        <div class="w-full h-40 bg-zinc-50 border border-dashed border-zinc-200 rounded flex items-center justify-center text-zinc-400 mb-3 text-xs font-bold uppercase tracking-wider">[Upload SUPER 1300-3i Image]</div>
+                        <div class="flex items-center space-x-2 mb-1"><input type="checkbox" class="accent-brandRed"><span class="text-[10px] font-bold text-gray-500 uppercase">Compare</span></div>
+                        <h4 class="text-base font-black text-brandBlack uppercase">SUPER 1300-3i</h4>
+                        <table class="w-full text-[11px] text-gray-600 mt-2 border-t border-gray-100">
+                            <tr class="border-b border-gray-50"><td class="py-1">Nominal output</td><td class="text-right font-bold text-brandBlack">100 hp</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Basic width</td><td class="text-right font-bold text-brandBlack">6 ft 1 in</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Paving width, max.</td><td class="text-right font-bold text-brandBlack">16 ft 5 in</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Maximum laydown rate</td><td class="text-right font-bold text-brandBlack">385 TPH</td></tr>
+                        </table>
+                    </div>
+                    <div class="mt-4 flex flex-col gap-2">
+                        <span class="text-[10px] text-gray-500 font-bold"><i class="fa-solid fa-file-pdf text-brandRed mr-1"></i> Brochure SUPER 1300 (PDF)</span>
+                        <button class="w-full bg-brandBlack text-white py-2 text-xs font-black uppercase tracking-wider hover:bg-brandRed transition">View product</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLASS HEADER 3 -->
+            <div class="mb-6 border-b border-gray-200 pb-2 mt-10">
+                <h3 class="text-xl font-black text-brandBlack uppercase tracking-tight">Universal Class</h3>
+                <p class="text-xs text-gray-500 mt-1">Versatile and powerful: The extremely wide range of applications is the most striking feature of pavers in the Universal Class.</p>
+            </div>
+
+            <!-- Grid for Universal Class -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <!-- Machine 6 -->
+                <div class="border border-gray-200 rounded p-4 bg-white flex flex-col justify-between hover:shadow-sm">
+                    <div>
+                        <div class="w-full h-40 bg-zinc-50 border border-dashed border-zinc-200 rounded flex items-center justify-center text-zinc-400 mb-3 text-xs font-bold uppercase tracking-wider">[Upload SUPER 1700-3i Image]</div>
+                        <div class="flex items-center space-x-2 mb-1"><input type="checkbox" class="accent-brandRed"><span class="text-[10px] font-bold text-gray-500 uppercase">Compare</span></div>
+                        <h4 class="text-base font-black text-brandBlack uppercase">SUPER 1700-3i</h4>
+                        <table class="w-full text-[11px] text-gray-600 mt-2 border-t border-gray-100">
+                            <tr class="border-b border-gray-50"><td class="py-1">Nominal output</td><td class="text-right font-bold text-brandBlack">173 hp</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Basic width</td><td class="text-right font-bold text-brandBlack">8 ft 6 in</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Paving width, max.</td><td class="text-right font-bold text-brandBlack">19 ft 6 in</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Maximum laydown rate</td><td class="text-right font-bold text-brandBlack">770 TPH</td></tr>
+                        </table>
+                    </div>
+                    <div class="mt-4 flex flex-col gap-2">
+                        <span class="text-[10px] text-gray-500 font-bold"><i class="fa-solid fa-file-pdf text-brandRed mr-1"></i> Brochure SUPER 1700 (PDF)</span>
+                        <button class="w-full bg-brandBlack text-white py-2 text-xs font-black uppercase tracking-wider hover:bg-brandRed transition">View product</button>
+                    </div>
+                </div>
+
+                <!-- Machine 7 -->
+                <div class="border border-gray-200 rounded p-4 bg-white flex flex-col justify-between hover:shadow-sm">
+                    <div>
+                        <div class="w-full h-40 bg-zinc-50 border border-dashed border-zinc-200 rounded flex items-center justify-center text-zinc-400 mb-3 text-xs font-bold uppercase tracking-wider">[Upload SUPER 1703-3i Image]</div>
+                        <div class="flex items-center space-x-2 mb-1"><input type="checkbox" class="accent-brandRed"><span class="text-[10px] font-bold text-gray-500 uppercase">Compare</span></div>
+                        <h4 class="text-base font-black text-brandBlack uppercase">SUPER 1703-3i</h4>
+                        <table class="w-full text-[11px] text-gray-600 mt-2 border-t border-gray-100">
+                            <tr class="border-b border-gray-50"><td class="py-1">Nominal output</td><td class="text-right font-bold text-brandBlack">173 hp</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Basic width</td><td class="text-right font-bold text-brandBlack">8 ft 6 in</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Paving width, max.</td><td class="text-right font-bold text-brandBlack">19 ft 6 in</td></tr>
+                            <tr class="border-b border-gray-50"><td class="py-1">Maximum laydown rate</td><td class="text-right font-bold text-brandBlack">770 TPH</td></tr>
+                        </table>
+                    </div>
+                    <div class="mt-4 flex flex-col gap-2">
+                        <span class="text-[10px] text-gray-500 font-bold"><i class="fa-solid fa-file-pdf text-brandRed mr-1"></i> Data Sheet SUPER 1703 (PDF)</span>
+                        <button class="w-full bg-brandBlack text-white py-2 text-xs font-black uppercase tracking-wider hover:bg-brandRed transition">View product</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLASS HEADER 4 -->
+            <div class="mb-6 border-b border-gray-200 pb-2 mt-10">
+                <h3 class="text-xl font-black text-brandBlack uppercase tracking-tight">Highway Class</h3>
+                <p class="text-xs text-gray-500 mt-1">Far and wide: The JUPITER pavers of the Highway Class are perfectly at home on highways and handling other demanding large-scale projects.</p>
+            </div>
+
+            <!-- Grid for Highway Class -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <!-- Machine 8 -->
+                <div class="border border-gray-200 rounded p-4 bg-white flex flex-col justify-between hover:shadow-sm">
+                    <div>
