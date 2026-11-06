@@ -6,616 +6,539 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JUPITER | Road Infratech Equipments</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        brandRed: '#DC2626',
-        brandBlack: '#111827'
-      }
-    }
-  }
-}
-</script>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 <style>
-*{box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 html{scroll-behavior:smooth}
-body{background:#fff;color:#111827}
-.editable{outline:none;cursor:text}
-.editable:focus{background:#fff7ed;outline:1px dashed #DC2626}
-.machine-card{transition:.25s}
-.machine-card:hover{box-shadow:0 5px 18px rgba(0,0,0,.08)}
-.class-heading{border-left:5px solid #DC2626;padding-left:12px}
-.photo-area{
-  height:180px;
-  background:#fafafa;
-  border:1px dashed #d4d4d8;
-  border-radius:5px;
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+body{background:#fff;color:#222}
+
+/* HEADER */
+header{
+ background:#111;
+ color:white;
+ text-align:center;
+ padding:22px 15px;
+ border-bottom:5px solid #DC2626;
 }
-.photo-area img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  background:white;
+.logo-upload{
+ width:125px;height:100px;
+ margin:0 auto 10px;
+ border:2px dashed #aaa;
+ border-radius:8px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ cursor:pointer;
+ overflow:hidden;
+ background:#fff;
+ color:#222;
 }
-.upload-symbol{
-  width:100%;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  cursor:pointer;
-  color:#a1a1aa;
-  transition:.2s;
+.logo-upload img{
+ width:100%;height:100%;
+ object-fit:contain;
 }
-.upload-symbol:hover{
-  color:#DC2626;
-  background:#fff7f7;
+.logo-placeholder{text-align:center;font-size:13px;color:#555}
+.logo-placeholder .camera{font-size:30px;display:block;margin-bottom:5px}
+#logoInput{display:none}
+
+.company-name{
+ color:#DC2626;
+ font-size:25px;
+ font-weight:bold;
+ letter-spacing:1px;
+ outline:none;
+ margin:8px auto;
+ max-width:900px;
 }
-.upload-symbol i{font-size:36px;margin-bottom:10px}
-.upload-symbol span{font-size:10px;font-weight:800;text-transform:uppercase}
-.upload-overlay{
-  position:absolute;
-  right:8px;
-  bottom:8px;
-  background:#111827;
-  color:white;
-  border-radius:50%;
-  width:36px;
-  height:36px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  z-index:2;
+.edit-hint{font-size:11px;color:#ccc;margin-bottom:8px}
+nav{
+ display:flex;justify-content:center;
+ flex-wrap:wrap;gap:22px;margin-top:18px
 }
-.upload-overlay:hover{background:#DC2626}
+nav a{color:white;text-decoration:none;font-weight:bold;font-size:14px}
+nav a:hover{color:#DC2626}
+
+/* HERO */
+.hero{
+ text-align:center;padding:45px 15px;
+ background:#f5f5f5;
+ border-bottom:1px solid #ddd;
+}
+.hero h1{font-size:32px;margin-bottom:12px}
+.hero h1 span{color:#DC2626}
+.hero p{color:#555;line-height:1.6;max-width:750px;margin:auto}
+
+/* FILTERS */
+.filter-area{
+ padding:25px 15px;text-align:center;
+}
+.filter-area input{
+ width:100%;max-width:420px;
+ padding:12px;border:1px solid #ccc;
+ border-radius:5px;margin-bottom:15px;
+}
+.filters{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.filters button{
+ padding:9px 16px;border:1px solid #222;
+ background:white;color:#222;border-radius:20px;
+ cursor:pointer;font-weight:bold;
+}
+.filters button.active,.filters button:hover{
+ background:#DC2626;color:white;border-color:#DC2626
+}
+
+/* CONTENT */
+.container{max-width:1250px;margin:auto;padding:15px}
+.class-section{margin:35px 0}
+.class-heading{
+ font-size:23px;padding:10px 14px;
+ border-left:5px solid #DC2626;
+ margin-bottom:12px;
+}
+.class-description{color:#666;line-height:1.6;margin:0 0 18px 14px}
+.machine-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+ gap:20px;
+}
+.machine-card{
+ border:1px solid #ddd;
+ border-radius:8px;
+ overflow:hidden;
+ background:white;
+ box-shadow:0 3px 10px rgba(0,0,0,.07);
+}
+.machine-title{
+ background:#f4f4f4;
+ padding:15px;text-align:center;
+ font-size:20px;font-weight:bold;
+ border-bottom:1px solid #ddd;
+}
+.machine-photo{
+ height:190px;
+ background:#f7f7f7;
+ display:flex;align-items:center;
+ justify-content:center;
+ position:relative;cursor:pointer;
+ overflow:hidden;
+}
+.machine-photo img{
+ width:100%;height:100%;
+ object-fit:contain;
+}
+.photo-placeholder{text-align:center;color:#777;font-size:13px}
+.photo-placeholder .camera{font-size:38px;display:block;margin-bottom:8px}
 .photo-input{display:none}
+.upload-label{
+ position:absolute;bottom:8px;right:8px;
+ background:#111;color:white;
+ padding:7px 10px;border-radius:4px;
+ font-size:11px;cursor:pointer;
+}
+.machine-details{padding:15px}
+.spec-title{font-weight:bold;margin-bottom:8px;color:#DC2626}
+.spec-table{width:100%;border-collapse:collapse;font-size:13px}
+.spec-table td{
+ padding:8px 5px;border-bottom:1px solid #eee;
+}
+.spec-table td:first-child{color:#555;width:58%}
+.spec-table td:last-child{font-weight:bold;text-align:right}
+.brochure{margin-top:12px;font-size:13px}
+.brochure a{color:#DC2626;font-weight:bold;text-decoration:none}
+.price{
+ color:#DC2626;font-size:18px;
+ font-weight:bold;margin:13px 0;
+}
+.card-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.card-buttons button,.card-buttons a{
+ border:0;border-radius:22px;
+ padding:10px 13px;font-size:12px;
+ font-weight:bold;text-decoration:none;
+ cursor:pointer;text-align:center;
+}
+.edit-btn{background:#222;color:white}
+.whatsapp-btn{background:#DC2626;color:white}
+
+/* FOOTER */
+footer{
+ background:#111;color:white;
+ border-top:5px solid #DC2626;
+ padding:35px 20px;
+ margin-top:45px;
+}
+.footer-grid{
+ max-width:1150px;margin:auto;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:25px;
+}
+footer h3{color:#DC2626;margin-bottom:14px}
+footer p{font-size:13px;line-height:1.8;color:#ddd}
+.footer-bottom{
+ text-align:center;border-top:1px solid #444;
+ margin-top:25px;padding-top:18px;
+ font-size:12px;color:#bbb
+}
+[contenteditable="true"]{cursor:text}
+[contenteditable="true"]:focus{
+ outline:1px dashed #DC2626;
+ background:#fff8f8;
+}
+@media(max-width:600px){
+ .company-name{font-size:19px}
+ .hero h1{font-size:25px}
+ nav{gap:13px}
+}
 </style>
 </head>
 
-<body class="font-sans antialiased">
+<body>
 
-<!-- TOP STRIP -->
-<div class="border-b border-gray-200 py-2.5 px-4 md:px-8
-flex flex-col md:flex-row justify-between items-center
-text-xs font-bold text-gray-700 gap-2">
-  <div>
-    <i class="fa-solid fa-file-invoice text-brandRed mr-1"></i>
-    GSTIN: 24BASPS3109M1Z7
+<header>
+ <label class="logo-upload" for="logoInput" title="Upload Jupiter Logo">
+  <div class="logo-placeholder" id="logoPlaceholder">
+   <span class="camera">📷</span>
+   Upload Jupiter Logo
   </div>
-  <a href="tel:+919909975881" class="hover:text-brandRed">
-    <i class="fa-solid fa-phone text-brandRed mr-1"></i>
-    Mob. +91-99099 75881
-  </a>
-</div>
+  <img id="logoPreview" alt="Jupiter Logo" style="display:none">
+ </label>
+ <input type="file" id="logoInput" accept="image/*">
 
-<!-- HEADER -->
-<header class="sticky top-0 z-40 bg-white border-b border-gray-200
-shadow-sm px-4 md:px-8 py-4 flex justify-between items-center">
+ <div class="company-name" id="companyName" contenteditable="true">
+  JUPITER ROAD INFRATECH EQUIPMENTS
+ </div>
+ <div class="edit-hint">Click company name to edit</div>
 
-  <a href="#" class="flex flex-col">
-    <div class="text-4xl md:text-5xl font-black tracking-tighter
-    text-brandBlack flex items-center">
-      JUPIT
-      <span class="text-brandRed flex flex-col justify-center
-      leading-none text-2xl mx-0.5">
-        <span class="h-1 w-5 bg-brandRed my-0.5"></span>
-        <span class="h-1 w-5 bg-brandRed my-0.5"></span>
-        <span class="h-1 w-5 bg-brandRed my-0.5"></span>
-      </span>
-      R
-    </div>
-    <div class="text-[10px] md:text-xs font-black tracking-widest
-    text-brandRed uppercase">
-      Road Infratech Equipments
-    </div>
-  </a>
-
-  <nav class="hidden lg:flex space-x-8 font-bold text-sm uppercase text-gray-700">
-    <a href="#products" class="text-brandRed">Products</a>
-    <a href="#applications" class="hover:text-brandRed">Applications</a>
-    <a href="#contact" class="hover:text-brandRed">Parts and Service</a>
-    <a href="#contact" class="hover:text-brandRed">About Us</a>
-  </nav>
-
-  <div class="flex items-center gap-3">
-    <button onclick="toggleSearch()" class="text-gray-700 hover:text-brandRed">
-      <i class="fa-solid fa-magnifying-glass text-lg"></i>
-    </button>
-    <a href="https://wa.me/919909975881"
-    class="bg-brandRed text-white px-5 py-2 rounded font-black
-    hover:bg-brandBlack text-xs uppercase tracking-wider">
-      Get A Quote
-    </a>
-  </div>
+ <nav>
+  <a href="#home">HOME</a>
+  <a href="#machines">MACHINES</a>
+  <a href="#about">ABOUT US</a>
+  <a href="#contact">CONTACT</a>
+ </nav>
 </header>
 
-<!-- SEARCH -->
-<div id="searchBox" class="hidden bg-zinc-50 p-4 border-b">
-  <input id="searchInput" oninput="applyFilters()"
-  placeholder="Search machine name..."
-  class="w-full max-w-xl border border-gray-300 rounded p-3 text-sm">
+<section class="hero" id="home">
+ <h1>ROAD CONSTRUCTION <span>EQUIPMENTS</span></h1>
+ <p>
+  Quality road construction and paving equipment for infrastructure
+  projects. Explore the Jupiter machine range and enquire for details.
+ </p>
+</section>
+
+<div class="filter-area" id="machines">
+ <input type="text" id="searchBox" placeholder="Search machine model...">
+ <div class="filters">
+  <button class="active" data-filter="all">ALL MACHINES</button>
+  <button data-filter="mini">MINI</button>
+  <button data-filter="compact">COMPACT</button>
+  <button data-filter="universal">UNIVERSAL</button>
+  <button data-filter="highway">HIGHWAY</button>
+  <button data-filter="special">SPECIAL</button>
+ </div>
 </div>
 
-<!-- HERO -->
-<section class="relative bg-zinc-50 border-b border-gray-200
-min-h-[320px] flex items-center px-4 md:px-12">
-  <div class="absolute right-10 opacity-10 text-zinc-400 pointer-events-none">
-    <i class="fa-solid fa-road text-[180px]"></i>
-  </div>
-  <div class="relative max-w-xl py-8">
-    <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tight">
-      Road Pavers
-    </h1>
-    <div class="w-20 h-1 bg-brandRed my-4"></div>
-    <div class="text-xs font-bold text-gray-500 uppercase tracking-wider">
-      Home　›　<span class="text-brandRed">JUPITER Products</span>　›　Road Pavers
-    </div>
-  </div>
+<main class="container" id="machineContainer"></main>
+
+<section class="container" id="about">
+ <h2 class="class-heading">ABOUT JUPITER</h2>
+ <p style="line-height:1.8;color:#555;padding:10px">
+  Jupiter Road Infratech Equipments is focused on road construction
+  and infrastructure equipment. Contact us for machine details,
+  product information and enquiries.
+ </p>
 </section>
 
-<!-- INTRO -->
-<section id="applications" class="max-w-7xl mx-auto px-4 md:px-8 py-10">
-  <h2 class="text-2xl font-black mb-3">
-    The right paver for every application
-  </h2>
-  <p class="text-gray-600 max-w-5xl text-sm leading-relaxed">
-    The extensive portfolio of <strong>JUPITER</strong> pavers is
-    subdivided into five product classes: Mini, Compact, Universal,
-    Highway and Special Class. These machines are designed for a wide
-    range of paving applications, from small repair projects to
-    demanding large-scale road construction.
-  </p>
-</section>
-
-<!-- PRODUCTS -->
-<main id="products" class="max-w-7xl mx-auto px-4 md:px-8 pb-20">
-
-  <div class="flex flex-col lg:flex-row gap-6 items-start">
-
-    <!-- FILTER -->
-    <aside class="w-full lg:w-64 shrink-0">
-      <button onclick="toggleFilter()" id="filterTriggerBtn"
-      class="flex items-center gap-2 bg-brandBlack text-white
-      px-4 py-3 rounded font-black text-xs uppercase
-      hover:bg-brandRed transition">
-        <i class="fa-solid fa-sliders"></i>
-        <span id="filterBtnText">Open product filter</span>
-      </button>
-
-      <div id="filterSidebar"
-      class="hidden bg-zinc-50 border border-gray-200 rounded p-5 mt-4">
-
-        <h3 class="font-black text-xs uppercase mb-5">Product filter</h3>
-
-        <div class="mb-5">
-          <h4 class="font-bold text-xs uppercase mb-2">Classes:</h4>
-          <div class="flex flex-col gap-2 text-xs text-gray-700">
-            <label><input type="checkbox" class="class-filter accent-brandRed" value="MINI CLASS" onchange="applyFilters()"> Mini Class</label>
-            <label><input type="checkbox" class="class-filter accent-brandRed" value="COMPACT CLASS" onchange="applyFilters()"> Compact Class</label>
-            <label><input type="checkbox" class="class-filter accent-brandRed" value="UNIVERSAL CLASS" onchange="applyFilters()"> Universal Class</label>
-            <label><input type="checkbox" class="class-filter accent-brandRed" value="HIGHWAY CLASS" onchange="applyFilters()"> Highway Class</label>
-            <label><input type="checkbox" class="class-filter accent-brandRed" value="SPECIAL CLASS" onchange="applyFilters()"> Special Class</label>
-          </div>
-        </div>
-
-        <div class="pt-3 border-t border-gray-200">
-          <div class="text-xs font-bold text-gray-500 mb-3">
-            Showing <span id="selectionCount">14</span> products
-          </div>
-          <button onclick="resetFilters()"
-          class="text-brandRed text-xs font-black uppercase">
-            Reset filter
-          </button>
-        </div>
-      </div>
-    </aside>
-
-    <!-- PRODUCT LIST -->
-    <div class="flex-1 w-full">
-      <div class="flex justify-between items-center mb-5">
-        <h2 class="text-xl font-black uppercase">Our Road Pavers</h2>
-        <span class="text-xs text-gray-500 font-bold">
-          <span id="visibleCount">14</span> Products
-        </span>
-      </div>
-
-      <div id="productContainer"></div>
-    </div>
+<footer id="contact">
+ <div class="footer-grid">
+  <div>
+   <h3>JUPITER</h3>
+   <p>Road Infratech Equipments</p>
+   <p>Road construction equipment solutions.</p>
   </div>
-</main>
-
-<!-- FOOTER -->
-<footer id="contact" class="bg-brandBlack text-white border-t-4 border-brandRed">
-  <div class="max-w-7xl mx-auto px-4 md:px-8 py-12
-  grid grid-cols-1 md:grid-cols-3 gap-10">
-
-    <div>
-      <div class="text-3xl font-black tracking-tighter">JUPITER</div>
-      <p class="text-xs text-gray-400 mt-3 leading-relaxed">
-        ROAD INFRATECH EQUIPMENTS
-      </p>
-      <p class="text-sm text-gray-300 mt-4">
-        Road construction equipment and paving solutions.
-      </p>
-    </div>
-
-    <div>
-      <h3 class="font-black uppercase text-sm mb-4">Contact Us</h3>
-      <p class="text-sm text-gray-300 mb-3">
-        <i class="fa-solid fa-phone text-brandRed mr-2"></i>
-        +91 99099 75881
-      </p>
-      <p class="text-sm text-gray-300">
-        <i class="fa-solid fa-envelope text-brandRed mr-2"></i>
-        Contact for business enquiries
-      </p>
-    </div>
-
-    <div>
-      <h3 class="font-black uppercase text-sm mb-4">Our Address</h3>
-      <p class="text-sm text-gray-300 leading-relaxed">
-        No. 215, 2nd Floor, Mahadev Complex,<br>
-        Near Ramol Police Station,<br>
-        C.T.M.-Ramol Road, Ramol,<br>
-        Ahmedabad - 382449, Gujarat, India.
-      </p>
-    </div>
+  <div>
+   <h3>CONTACT DETAILS</h3>
+   <p>Phone: +91-99099 75881</p>
+   <p>GSTIN: 24BASPS3109M1Z7</p>
   </div>
-
-  <div class="bg-brandRed text-white text-center py-3 text-xs font-bold">
-    © 2026 JUPITER Road Infratech Equipments. All Rights Reserved.
+  <div>
+   <h3>ADDRESS</h3>
+   <p>No. 215, 2nd Floor, Mahadev Complex, Near Ramol Police Station, C.T.M.-Ramol Road, Ramol, Ahmedabad - 382449, Gujarat, India.</p>
   </div>
+ </div>
+ <div class="footer-bottom">
+  © <span id="year"></span> JUPITER ROAD INFRATECH EQUIPMENTS. All Rights Reserved.
+ </div>
 </footer>
 
 <script>
-
-/* MACHINE DATA */
-
-const machines = [
-  {name:"MINI 500",cls:"MINI CLASS",output:"14 hp",basic:"2 ft 11 in",paving:"5 ft 11 in",rate:"22 US t/hr",brochure:"Contact for details"},
-  {name:"MINI 502",cls:"MINI CLASS",output:"14 hp",basic:"3 ft 2 in",paving:"5 ft 11 in",rate:"22 US t/hr",brochure:"Contact for details"},
-  {name:"SUPER 700i",cls:"MINI CLASS",output:"74 hp",basic:"4 ft 4 in",paving:"10 ft 6 in",rate:"275 US t/hr",brochure:"Contact for details"},
-  {name:"SUPER 800-5 P",cls:"MINI CLASS",output:"74 hp",basic:"4 ft 7 in",paving:"11 ft 5 in",rate:"330 US t/hr",brochure:"Highlights Flyer (PDF)"},
-  {name:"SUPER 1300-3i",cls:"COMPACT CLASS",output:"100 hp",basic:"6 ft 1 in",paving:"16 ft 5 in",rate:"385 TPH",brochure:"Brochure SUPER 1300 (PDF)"},
-  {name:"SUPER 1700-3i",cls:"UNIVERSAL CLASS",output:"173 hp",basic:"8 ft 6 in",paving:"19 ft 6 in",rate:"770 TPH",brochure:"Brochure SUPER 1700 (PDF)"},
-  {name:"SUPER 1703-3i",cls:"UNIVERSAL CLASS",output:"173 hp",basic:"8 ft 6 in",paving:"19 ft 6 in",rate:"770 TPH",brochure:"Data Sheet SUPER 1703 (PDF)"},
-  {name:"SUPER 2000-3i",cls:"HIGHWAY CLASS",output:"Confirm specification",basic:"Confirm specification",paving:"Confirm specification",rate:"Confirm specification",brochure:"Contact for details"},
-  {name:"SUPER 2003-3i",cls:"HIGHWAY CLASS",output:"Confirm specification",basic:"Confirm specification",paving:"Confirm specification",rate:"Confirm specification",brochure:"Contact for details"},
-  {name:"SUPER 2000-5 X",cls:"HIGHWAY CLASS",output:"Confirm specification",basic:"Confirm specification",paving:"Confirm specification",rate:"Confirm specification",brochure:"Contact for details"},
-  {name:"SUPER 2003-5 X",cls:"HIGHWAY CLASS",output:"Confirm specification",basic:"Confirm specification",paving:"Confirm specification",rate:"Confirm specification",brochure:"Contact for details"},
-  {name:"SUPER 2100-5 X",cls:"HIGHWAY CLASS",output:"Confirm specification",basic:"Confirm specification",paving:"Confirm specification",rate:"Confirm specification",brochure:"Contact for details"},
-  {name:"SUPER 3000-3i",cls:"HIGHWAY CLASS",output:"Confirm specification",basic:"Confirm specification",paving:"Confirm specification",rate:"Confirm specification",brochure:"Contact for details"},
-  {name:"SUPER 1800-5 X SprayJet",cls:"SPECIAL CLASS",output:"Confirm specification",basic:"Confirm specification",paving:"Confirm specification",rate:"Confirm specification",brochure:"Contact for details"}
+const classes = [
+ {
+  id:"mini",name:"MINI CLASS",
+  description:"Compact machines for repair work, cycle paths, footpaths, farm tracks, minor roads, parking lots, sports grounds, trenches, halls and landscaping."
+ },
+ {
+  id:"compact",name:"COMPACT CLASS",
+  description:"Compact and maneuverable machines for small and medium-sized jobs, city streets, combined foot and cycle paths, farm tracks and confined work areas."
+ },
+ {
+  id:"universal",name:"UNIVERSAL CLASS",
+  description:"Versatile and powerful machines for a wide range of applications, from highways to traffic circles, with optional high-compaction technology."
+ },
+ {
+  id:"highway",name:"HIGHWAY CLASS",
+  description:"Powerful machines for large-scale highway and demanding infrastructure projects, with wide paving widths and high laydown rates."
+ },
+ {
+  id:"special",name:"SPECIAL CLASS",
+  description:"Specialist paving applications, including thin overlay hot-on-hot paving, InLine Pave and material feeder solutions."
+ }
 ];
 
-const classDescriptions = {
-  "MINI CLASS":"Small and efficient: Ideal for repair work, cycle paths, footpaths, farm tracks, minor roads, parking areas and landscaping projects.",
-  "COMPACT CLASS":"Compact and maneuverable: Suitable for small and medium-sized projects, city streets, combined footpaths and cycle paths.",
-  "UNIVERSAL CLASS":"Versatile and powerful: Designed for a wide range of applications, from highways to traffic circles and other road projects.",
-  "HIGHWAY CLASS":"Far and wide: Designed for demanding large-scale highway and road construction projects.",
-  "SPECIAL CLASS":"Specialized applications: Designed for specialist paving requirements, including spray paving and thin overlay applications."
-};
+const machines = [
+ {name:"MINI 500",cls:"mini",power:"14 hp",basic:"2 ft 11 in",width:"5 ft 11 in",rate:"22 US t/hr"},
+ {name:"MINI 502",cls:"mini",power:"14 hp",basic:"3 ft 2 in",width:"5 ft 11 in",rate:"22 US t/hr"},
+ {name:"SUPER 700i",cls:"mini",power:"74 hp",basic:"4 ft 4 in",width:"10 ft 6 in",rate:"275 US t/hr"},
+ {name:"SUPER 800-5 P",cls:"mini",power:"74 hp",basic:"4 ft 7 in",width:"11 ft 5 in",rate:"330 US t/hr"},
 
-/* LOAD SAVED DATA */
+ {name:"SUPER 1300-3i",cls:"compact"},
 
-function loadMachines(){
-  try{
-    const saved=JSON.parse(localStorage.getItem("jupiterMachineData")||"[]");
-    machines.forEach((m,i)=>{
-      if(saved[i]) Object.assign(m,saved[i]);
-    });
-  }catch(e){}
+ {name:"SUPER 1700-3i",cls:"universal"},
+ {name:"SUPER 1703-3i",cls:"universal"},
+
+ {name:"SUPER 2000-3i",cls:"highway"},
+ {name:"SUPER 2003-3i",cls:"highway"},
+ {name:"SUPER 2000-5 X",cls:"highway"},
+ {name:"SUPER 2003-5 X",cls:"highway"},
+ {name:"SUPER 2100-5 X",cls:"highway"},
+ {name:"SUPER 3000-3i",cls:"highway"},
+
+ {name:"SUPER 1800-5 X SprayJet",cls:"special"}
+];
+
+const container = document.getElementById("machineContainer");
+let currentFilter = "all";
+
+function safeText(value){
+ return String(value || "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
 }
 
-function saveMachines(){
-  localStorage.setItem("jupiterMachineData",JSON.stringify(machines));
-}
+function renderMachines(){
+ container.innerHTML = "";
 
-function editField(index,field,value){
-  machines[index][field]=value.trim();
-  saveMachines();
-}
+ classes.forEach(category=>{
+  if(currentFilter !== "all" && currentFilter !== category.id) return;
 
-/* PRODUCT CARD */
+  const matching = machines.filter(m=>m.cls===category.id);
+  const section = document.createElement("section");
+  section.className = "class-section";
+  section.innerHTML = `
+   <h2 class="class-heading">${category.name}</h2>
+   <p class="class-description">${category.description}</p>
+   <div class="machine-grid"></div>
+  `;
 
-function createCard(machine,index){
+  const grid = section.querySelector(".machine-grid");
 
-  return `
-  <article class="machine-card border border-gray-200 rounded p-4
-  bg-white flex flex-col justify-between"
-  data-class="${machine.cls}" data-index="${index}">
+  matching.forEach(machine=>{
+   const index = machines.indexOf(machine);
+   const card = document.createElement("article");
+   card.className = "machine-card";
+   card.dataset.search = machine.name.toLowerCase();
 
-    <div>
+   card.innerHTML = `
+    <div class="machine-title">${safeText(machine.name)}</div>
 
-      <!-- PHOTO UPLOAD AREA -->
-      <div class="photo-area mb-3" id="photoBox${index}">
+    <label class="machine-photo" for="photo-${index}">
+     <div class="photo-placeholder" id="placeholder-${index}">
+      <span class="camera">📷</span>
+      Upload Machine Photo
+     </div>
+     <img id="image-${index}" alt="${safeText(machine.name)}" style="display:none">
+     <span class="upload-label">UPLOAD PHOTO</span>
+    </label>
+    <input class="photo-input" type="file" id="photo-${index}" accept="image/*">
 
-        <label class="upload-symbol" id="uploadSymbol${index}"
-        for="photoInput${index}">
-          <i class="fa-solid fa-camera"></i>
-          <span>Upload Machine Photo</span>
-          <span class="mt-1 font-normal normal-case">
-            Click here to select image
-          </span>
-        </label>
+    <div class="machine-details">
+     <div class="spec-title">TECHNICAL SPECIFICATIONS</div>
+     <table class="spec-table">
+      <tr><td>Machine Class</td><td>${category.name}</td></tr>
+      <tr><td>Nominal Output</td><td>${machine.power || "Confirm specification"}</td></tr>
+      <tr><td>Basic Width</td><td>${machine.basic || "Confirm specification"}</td></tr>
+      <tr><td>Paving Width Max.</td><td>${machine.width || "Confirm specification"}</td></tr>
+      <tr><td>Maximum Laydown Rate</td><td>${machine.rate || "Confirm specification"}</td></tr>
+     </table>
 
-        <img id="machineImage${index}" class="hidden" alt="Machine photo">
+     <div class="brochure">
+      <span style="color:#DC2626;font-weight:bold">▣ PDF Brochure:</span>
+      <a href="#" class="brochure-link">Add brochure link</a>
+     </div>
 
-        <label class="upload-overlay" for="photoInput${index}"
-        title="Upload or change photo">
-          <i class="fa-solid fa-camera"></i>
-        </label>
+     <div class="price">₹ Price on Request</div>
 
-        <input type="file" accept="image/*"
-        class="photo-input" id="photoInput${index}"
-        onchange="uploadPhoto(event,${index})">
-
-      </div>
-
-      <label class="text-[10px] font-bold text-gray-500 uppercase">
-        <input type="checkbox" class="compare-checkbox accent-brandRed">
-        Compare
-      </label>
-
-      <h3 class="text-base font-black uppercase mt-2 editable"
-      contenteditable="true"
-      onblur="editField(${index},'name',this.innerText)">
-        ${machine.name}
-      </h3>
-
-      <table class="w-full text-[11px] text-gray-600 mt-2 border-t border-gray-100">
-
-        <tr class="border-b border-gray-100">
-          <td class="py-2">Machine class</td>
-          <td class="text-right font-bold text-brandBlack editable"
-          contenteditable="true"
-          onblur="editField(${index},'cls',this.innerText.toUpperCase())">${machine.cls}</td>
-        </tr>
-
-        <tr class="border-b border-gray-100">
-          <td class="py-2">Nominal output</td>
-          <td class="text-right font-bold text-brandBlack editable"
-          contenteditable="true"
-          onblur="editField(${index},'output',this.innerText)">${machine.output}</td>
-        </tr>
-
-        <tr class="border-b border-gray-100">
-          <td class="py-2">Basic width</td>
-          <td class="text-right font-bold text-brandBlack editable"
-          contenteditable="true"
-          onblur="editField(${index},'basic',this.innerText)">${machine.basic}</td>
-        </tr>
-
-        <tr class="border-b border-gray-100">
-          <td class="py-2">Paving width, max.</td>
-          <td class="text-right font-bold text-brandBlack editable"
-          contenteditable="true"
-          onblur="editField(${index},'paving',this.innerText)">${machine.paving}</td>
-        </tr>
-
-        <tr class="border-b border-gray-100">
-          <td class="py-2">Maximum laydown rate</td>
-          <td class="text-right font-bold text-brandBlack editable"
-          contenteditable="true"
-          onblur="editField(${index},'rate',this.innerText)">${machine.rate}</td>
-        </tr>
-
-      </table>
-    </div>
-
-    <div class="mt-4 flex flex-col gap-2">
-
-      <span class="text-[10px] text-gray-500 font-bold">
-        <i class="fa-solid fa-file-pdf text-brandRed mr-1"></i>
-        <span class="editable" contenteditable="true"
-        onblur="editField(${index},'brochure',this.innerText)">${machine.brochure}</span>
-      </span>
-
-      <div class="text-sm font-black text-brandRed">
-        Price:
-        <span class="editable" contenteditable="true"
-        onblur="editField(${index},'price',this.innerText)">
-          ${machine.price || "₹ Price on Request"}
-        </span>
-      </div>
-
-      <a href="https://wa.me/919909975881?text=${encodeURIComponent("I am interested in "+machine.name)}"
-      target="_blank"
-      class="w-full bg-brandRed text-white py-2 text-xs
-      font-black uppercase tracking-wider text-center hover:bg-brandBlack">
-        <i class="fa-brands fa-whatsapp mr-1"></i>
-        Enquire Now
+     <div class="card-buttons">
+      <button class="edit-btn" onclick="editMachine(${index})">EDIT DETAILS</button>
+      <a class="whatsapp-btn" target="_blank"
+       href="https://wa.me/919909975881?text=${encodeURIComponent("Hello, I want details about "+machine.name)}">
+       WHATSAPP ENQUIRY
       </a>
-
+     </div>
     </div>
-  </article>`;
-}
+   `;
 
-/* RENDER ALL 14 MACHINES */
+   grid.appendChild(card);
 
-function renderProducts(){
+   const fileInput = card.querySelector("input[type=file]");
+   fileInput.addEventListener("change",e=>{
+    const file=e.target.files[0];
+    if(!file)return;
+    if(!file.type.startsWith("image/")){
+     alert("Please select an image file.");
+     return;
+    }
+    const reader=new FileReader();
+    reader.onload=()=>{
+     const img=document.getElementById("image-"+index);
+     img.src=reader.result;
+     img.style.display="block";
+     document.getElementById("placeholder-"+index).style.display="none";
+     try{
+      localStorage.setItem("jupiterMachinePhoto"+index,reader.result);
+     }catch(error){
+      alert("Image is too large to save in this browser. Try a smaller image.");
+     }
+    };
+    reader.readAsDataURL(file);
+   });
 
-  const container=document.getElementById("productContainer");
-  container.innerHTML="";
+   const savedPhoto=localStorage.getItem("jupiterMachinePhoto"+index);
+   if(savedPhoto){
+    card.querySelector("img").src=savedPhoto;
+    card.querySelector("img").style.display="block";
+    card.querySelector(".photo-placeholder").style.display="none";
+   }
 
-  const classes=[
-    "MINI CLASS",
-    "COMPACT CLASS",
-    "UNIVERSAL CLASS",
-    "HIGHWAY CLASS",
-    "SPECIAL CLASS"
-  ];
-
-  classes.forEach(cls=>{
-
-    const group=machines
-      .map((machine,index)=>({...machine,index}))
-      .filter(machine=>machine.cls===cls);
-
-    if(!group.length)return;
-
-    const section=document.createElement("section");
-    section.className="mb-12 product-section";
-    section.dataset.class=cls;
-
-    section.innerHTML=`
-      <div class="mb-5 border-b border-gray-200 pb-3">
-        <h3 class="text-xl font-black uppercase class-heading">${cls}</h3>
-        <p class="text-xs text-gray-500 mt-2 leading-relaxed">
-          ${classDescriptions[cls]}
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        ${group.map(m=>createCard(m,m.index)).join("")}
-      </div>
-    `;
-
-    container.appendChild(section);
+   const brochureLink=card.querySelector(".brochure-link");
+   const savedBrochure=localStorage.getItem("jupiterBrochure"+index);
+   if(savedBrochure){
+    brochureLink.href=savedBrochure;
+    brochureLink.textContent="View PDF Brochure";
+    brochureLink.target="_blank";
+   }
+   brochureLink.addEventListener("click",e=>{
+    e.preventDefault();
+    const url=prompt("Enter PDF brochure URL:");
+    if(url){
+     localStorage.setItem("jupiterBrochure"+index,url);
+     brochureLink.href=url;
+     brochureLink.textContent="View PDF Brochure";
+     brochureLink.target="_blank";
+    }
+   });
   });
 
-  restorePhotos();
-  updateCounts();
+  container.appendChild(section);
+ });
+ applySearch();
 }
 
-/* PHOTO UPLOAD */
+function editMachine(index){
+ const m=machines[index];
+ const power=prompt("Nominal Output:",m.power||"");
+ if(power===null)return;
+ const basic=prompt("Basic Width:",m.basic||"");
+ if(basic===null)return;
+ const width=prompt("Maximum Paving Width:",m.width||"");
+ if(width===null)return;
+ const rate=prompt("Maximum Laydown Rate:",m.rate||"");
+ if(rate===null)return;
+ m.power=power;
+ m.basic=basic;
+ m.width=width;
+ m.rate=rate;
+ try{
+  localStorage.setItem("jupiterMachineSpecs",JSON.stringify(machines));
+ }catch(e){}
+ renderMachines();
+}
 
-function uploadPhoto(event,index){
+function applySearch(){
+ const query=document.getElementById("searchBox").value.toLowerCase();
+ document.querySelectorAll(".machine-card").forEach(card=>{
+  card.style.display=card.dataset.search.includes(query)?"":"none";
+ });
+ document.querySelectorAll(".class-section").forEach(section=>{
+  const cards=section.querySelectorAll(".machine-card");
+  section.style.display=[...cards].some(card=>card.style.display!=="none")?"":"none";
+ });
+}
 
-  const file=event.target.files[0];
-  if(!file)return;
+document.querySelectorAll(".filters button").forEach(button=>{
+ button.addEventListener("click",()=>{
+  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  currentFilter=button.dataset.filter;
+  renderMachines();
+ });
+});
 
-  if(!file.type.startsWith("image/")){
-    alert("Please select an image file.");
-    return;
+document.getElementById("searchBox").addEventListener("input",applySearch);
+
+/* JUPITER LOGO UPLOAD */
+const logoInput=document.getElementById("logoInput");
+const logoPreview=document.getElementById("logoPreview");
+const logoPlaceholder=document.getElementById("logoPlaceholder");
+
+function showLogo(src){
+ logoPreview.src=src;
+ logoPreview.style.display="block";
+ logoPlaceholder.style.display="none";
+}
+logoInput.addEventListener("change",e=>{
+ const file=e.target.files[0];
+ if(!file)return;
+ if(!file.type.startsWith("image/")){
+  alert("Please select an image file.");
+  return;
+ }
+ const reader=new FileReader();
+ reader.onload=()=>{
+  showLogo(reader.result);
+  try{
+   localStorage.setItem("jupiterLogo",reader.result);
+  }catch(error){
+   alert("Logo image is too large. Please select a smaller image.");
   }
+ };
+ reader.readAsDataURL(file);
+});
 
-  const reader=new FileReader();
+const savedLogo=localStorage.getItem("jupiterLogo");
+if(savedLogo)showLogo(savedLogo);
 
-  reader.onload=function(e){
+/* EDITABLE COMPANY NAME */
+const companyName=document.getElementById("companyName");
+const savedName=localStorage.getItem("jupiterCompanyName");
+if(savedName)companyName.textContent=savedName;
 
-    const image=document.getElementById("machineImage"+index);
-    const symbol=document.getElementById("uploadSymbol"+index);
+companyName.addEventListener("input",()=>{
+ localStorage.setItem("jupiterCompanyName",companyName.textContent);
+});
+companyName.addEventListener("blur",()=>{
+ companyName.textContent=companyName.textContent.trim() || "JUPITER ROAD INFRATECH EQUIPMENTS";
+ localStorage.setItem("jupiterCompanyName",companyName.textContent);
+});
 
-    image.src=e.target.result;
-    image.classList.remove("hidden");
-    symbol.classList.add("hidden");
+document.getElementById("year").textContent=new Date().getFullYear();
 
-    try{
-      localStorage.setItem("jupiterPhoto"+index,e.target.result);
-    }catch(error){
-      alert("Image is too large for browser storage. Try a smaller image.");
-    }
-  };
+/* RESTORE EDITED MACHINE SPECS */
+try{
+ const savedSpecs=JSON.parse(localStorage.getItem("jupiterMachineSpecs"));
+ if(Array.isArray(savedSpecs) && savedSpecs.length===machines.length){
+  savedSpecs.forEach((saved,i)=>Object.assign(machines[i],saved));
+ }
+}catch(e){}
 
-  reader.readAsDataURL(file);
-}
-
-/* RESTORE UPLOADED PHOTOS */
-
-function restorePhotos(){
-
-  machines.forEach((machine,index)=>{
-
-    const saved=localStorage.getItem("jupiterPhoto"+index);
-    if(!saved)return;
-
-    const image=document.getElementById("machineImage"+index);
-    const symbol=document.getElementById("uploadSymbol"+index);
-
-    if(image && symbol){
-      image.src=saved;
-      image.classList.remove("hidden");
-      symbol.classList.add("hidden");
-    }
-  });
-}
-
-/* FILTER */
-
-function toggleFilter(){
-
-  const sidebar=document.getElementById("filterSidebar");
-  sidebar.classList.toggle("hidden");
-
-  document.getElementById("filterBtnText").innerText=
-    sidebar.classList.contains("hidden")
-    ?"Open product filter"
-    :"Close product filter";
-}
-
-function toggleSearch(){
-  document.getElementById("searchBox").classList.toggle("hidden");
-}
-
-function applyFilters(){
-
-  const selected=[...document.querySelectorAll(".class-filter:checked")]
-    .map(input=>input.value);
-
-  const search=document.getElementById("searchInput").value.toLowerCase();
-
-  document.querySelectorAll(".machine-card").forEach(card=>{
-
-    const cls=card.dataset.class;
-    const index=Number(card.dataset.index);
-    const name=machines[index].name.toLowerCase();
-
-    const classMatch=selected.length===0 || selected.includes(cls);
-    const searchMatch=name.includes(search);
-
-    card.style.display=classMatch && searchMatch ? "flex":"none";
-  });
-
-  document.querySelectorAll(".product-section").forEach(section=>{
-
-    const visible=[...section.querySelectorAll(".machine-card")]
-      .some(card=>card.style.display!=="none");
-
-    section.style.display=visible?"block":"none";
-  });
-
-  updateCounts();
-}
-
-function updateCounts(){
-
-  const visible=[...document.querySelectorAll(".machine-card")]
-    .filter(card=>card.style.display!=="none").length;
-
-  document.getElementById("visibleCount").innerText=visible;
-  document.getElementById("selectionCount").innerText=visible;
-}
-
-function resetFilters(){
-
-  document.querySelectorAll(".class-filter")
-    .forEach(input=>input.checked=false);
-
-  document.getElementById("searchInput").value="";
-  applyFilters();
-}
-
-/* START WEBSITE */
-
-loadMachines();
-renderProducts();
-
+renderMachines();
 </script>
 </body>
 </html>
-
-        
