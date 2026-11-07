@@ -1,544 +1,361 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JUPITER | Road Infratech Equipments</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Pavers - Jupiter Road Infratech Equipments</title>
+    <style>
+        :root {
+            --primary-red: #E30613;
+            --dark-black: #111111;
+            --pure-white: #FFFFFF;
+            --gray-border: #E0E0E0;
+            --light-bg: #F9F9F9;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-html{scroll-behavior:smooth}
-body{background:#fff;color:#222}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-/* HEADER */
-header{
- background:#111;
- color:white;
- text-align:center;
- padding:22px 15px;
- border-bottom:5px solid #DC2626;
-}
-.logo-upload{
- width:125px;height:100px;
- margin:0 auto 10px;
- border:2px dashed #aaa;
- border-radius:8px;
- display:flex;
- align-items:center;
- justify-content:center;
- cursor:pointer;
- overflow:hidden;
- background:#fff;
- color:#222;
-}
-.logo-upload img{
- width:100%;height:100%;
- object-fit:contain;
-}
-.logo-placeholder{text-align:center;font-size:13px;color:#555}
-.logo-placeholder .camera{font-size:30px;display:block;margin-bottom:5px}
-#logoInput{display:none}
+        body {
+            background-color: var(--pure-white);
+            color: var(--dark-black);
+            line-height: 1.6;
+        }
 
-.company-name{
- color:#DC2626;
- font-size:25px;
- font-weight:bold;
- letter-spacing:1px;
- outline:none;
- margin:8px auto;
- max-width:900px;
-}
-.edit-hint{font-size:11px;color:#ccc;margin-bottom:8px}
-nav{
- display:flex;justify-content:center;
- flex-wrap:wrap;gap:22px;margin-top:18px
-}
-nav a{color:white;text-decoration:none;font-weight:bold;font-size:14px}
-nav a:hover{color:#DC2626}
+        header {
+            border-bottom: 3px solid var(--primary-red);
+            background-color: var(--pure-white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
 
-/* HERO */
-.hero{
- text-align:center;padding:45px 15px;
- background:#f5f5f5;
- border-bottom:1px solid #ddd;
-}
-.hero h1{font-size:32px;margin-bottom:12px}
-.hero h1 span{color:#DC2626}
-.hero p{color:#555;line-height:1.6;max-width:750px;margin:auto}
+        .logo-area {
+            display: flex;
+            flex-direction: column;
+        }
 
-/* FILTERS */
-.filter-area{
- padding:25px 15px;text-align:center;
-}
-.filter-area input{
- width:100%;max-width:420px;
- padding:12px;border:1px solid #ccc;
- border-radius:5px;margin-bottom:15px;
-}
-.filters{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
-.filters button{
- padding:9px 16px;border:1px solid #222;
- background:white;color:#222;border-radius:20px;
- cursor:pointer;font-weight:bold;
-}
-.filters button.active,.filters button:hover{
- background:#DC2626;color:white;border-color:#DC2626
-}
+        .brand-logo {
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--dark-black);
+        }
 
-/* CONTENT */
-.container{max-width:1250px;margin:auto;padding:15px}
-.class-section{margin:35px 0}
-.class-heading{
- font-size:23px;padding:10px 14px;
- border-left:5px solid #DC2626;
- margin-bottom:12px;
-}
-.class-description{color:#666;line-height:1.6;margin:0 0 18px 14px}
-.machine-grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
- gap:20px;
-}
-.machine-card{
- border:1px solid #ddd;
- border-radius:8px;
- overflow:hidden;
- background:white;
- box-shadow:0 3px 10px rgba(0,0,0,.07);
-}
-.machine-title{
- background:#f4f4f4;
- padding:15px;text-align:center;
- font-size:20px;font-weight:bold;
- border-bottom:1px solid #ddd;
-}
-.machine-photo{
- height:190px;
- background:#f7f7f7;
- display:flex;align-items:center;
- justify-content:center;
- position:relative;cursor:pointer;
- overflow:hidden;
-}
-.machine-photo img{
- width:100%;height:100%;
- object-fit:contain;
-}
-.photo-placeholder{text-align:center;color:#777;font-size:13px}
-.photo-placeholder .camera{font-size:38px;display:block;margin-bottom:8px}
-.photo-input{display:none}
-.upload-label{
- position:absolute;bottom:8px;right:8px;
- background:#111;color:white;
- padding:7px 10px;border-radius:4px;
- font-size:11px;cursor:pointer;
-}
-.machine-details{padding:15px}
-.spec-title{font-weight:bold;margin-bottom:8px;color:#DC2626}
-.spec-table{width:100%;border-collapse:collapse;font-size:13px}
-.spec-table td{
- padding:8px 5px;border-bottom:1px solid #eee;
-}
-.spec-table td:first-child{color:#555;width:58%}
-.spec-table td:last-child{font-weight:bold;text-align:right}
-.brochure{margin-top:12px;font-size:13px}
-.brochure a{color:#DC2626;font-weight:bold;text-decoration:none}
-.price{
- color:#DC2626;font-size:18px;
- font-weight:bold;margin:13px 0;
-}
-.card-buttons{display:flex;gap:8px;flex-wrap:wrap}
-.card-buttons button,.card-buttons a{
- border:0;border-radius:22px;
- padding:10px 13px;font-size:12px;
- font-weight:bold;text-decoration:none;
- cursor:pointer;text-align:center;
-}
-.edit-btn{background:#222;color:white}
-.whatsapp-btn{background:#DC2626;color:white}
+        .brand-logo span {
+            color: var(--primary-red);
+            border-top: 4px solid var(--primary-red);
+            border-bottom: 4px solid var(--primary-red);
+            display: inline-block;
+            line-height: 0.8;
+            padding: 2px 0;
+        }
 
-/* FOOTER */
-footer{
- background:#111;color:white;
- border-top:5px solid #DC2626;
- padding:35px 20px;
- margin-top:45px;
-}
-.footer-grid{
- max-width:1150px;margin:auto;
- display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:25px;
-}
-footer h3{color:#DC2626;margin-bottom:14px}
-footer p{font-size:13px;line-height:1.8;color:#ddd}
-.footer-bottom{
- text-align:center;border-top:1px solid #444;
- margin-top:25px;padding-top:18px;
- font-size:12px;color:#bbb
-}
-[contenteditable="true"]{cursor:text}
-[contenteditable="true"]:focus{
- outline:1px dashed #DC2626;
- background:#fff8f8;
-}
-@media(max-width:600px){
- .company-name{font-size:19px}
- .hero h1{font-size:25px}
- nav{gap:13px}
-}
-</style>
+        .company-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-black);
+            font-weight: 600;
+            margin-left: 25px;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-red);
+        }
+
+        .hero-banner {
+            padding: 60px 5%;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-border);
+            background: var(--pure-white);
+        }
+
+        .hero-banner h1 {
+            font-size: 42px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--dark-black);
+        }
+
+        .hero-banner h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-red);
+            margin: 10px auto 0;
+        }
+
+        .hero-intro {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .class-section {
+            padding: 60px 5% 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .class-title {
+            font-size: 28px;
+            color: var(--dark-black);
+            border-bottom: 2px solid var(--dark-black);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .class-desc {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 1100px;
+        }
+
+        .machine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .machine-card {
+            border: 1px solid var(--gray-border);
+            background-color: var(--pure-white);
+            padding: 25px;
+            border-top: 4px solid var(--dark-black);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .machine-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fcfcfc;
+            border: 1px dashed #ccc;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .upload-btn-wrapper {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn-upload {
+            border: 1px solid var(--dark-black);
+            color: var(--dark-black);
+            background-color: var(--pure-white);
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .machine-name {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--dark-black);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .spec-table td {
+            padding: 6px 0;
+            font-size: 14px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .spec-label {
+            color: #777;
+        }
+
+        .spec-value {
+            text-align: right;
+            font-weight: 600;
+            color: var(--dark-black);
+            border: 1px solid transparent;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .edit-action-btn {
+            flex: 1;
+            background-color: var(--dark-black);
+            color: var(--pure-white);
+            border: none;
+            padding: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .edit-action-btn:hover {
+            background-color: var(--primary-red);
+        }
+
+        .quote-btn {
+            flex: 1;
+            background-color: var(--primary-red);
+            color: var(--pure-white);
+            border: none;
+            padding: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .quote-btn:hover {
+            opacity: 0.9;
+        }
+
+        [contenteditable="true"] {
+            border: 1px dashed var(--primary-red) !important;
+            padding: 2px;
+            background-color: #fff9f9;
+            outline: none;
+        }
+
+        footer {
+            background-color: var(--dark-black);
+            color: var(--pure-white);
+            padding: 50px 5% 30px;
+            margin-top: 60px;
+            border-top: 5px solid var(--primary-red);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--pure-white);
+            border-left: 3px solid var(--primary-red);
+            padding-left: 10px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
- <label class="logo-upload" for="logoInput" title="Upload Jupiter Logo">
-  <div class="logo-placeholder" id="logoPlaceholder">
-   <span class="camera">📷</span>
-   Upload Jupiter Logo
-  </div>
-  <img id="logoPreview" alt="Jupiter Logo" style="display:none">
- </label>
- <input type="file" id="logoInput" accept="image/*">
+    <header>
+        <div class="logo-area">
+            <div class="brand-logo">JUPI<span>T☰</span>R</div>
+            <div class="company-title">Jupiter Road Infratech Equipments</div>
+        </div>
+        <nav>
+            <a href="#mini">Mini Class</a>
+            <a href="#compact">Compact Class</a>
+            <a href="#universal">Universal Class</a>
+            <a href="#highway">Highway Class</a>
+            <a href="#special">Special Class</a>
+        </nav>
+    </header>
 
- <div class="company-name" id="companyName" contenteditable="true">
-  JUPITER ROAD INFRATECH EQUIPMENTS
- </div>
- <div class="edit-hint">Click company name to edit</div>
+    <section class="hero-banner">
+        <h1>The right paver for every application</h1>
+        <p class="hero-intro">The extensive portfolio of JUPITER pavers is subdivided into five product classes: the Mini, Compact, Universal, Highway, and Special Class. These cover a range of pave widths from 25 cm to 18 m. The road pavers of all five classes offer a variety of characteristic equipment options and screeds. Thanks to this, they ideally fulfill the needs of customers on construction projects around the globe.</p>
+    </section>
 
- <nav>
-  <a href="#home">HOME</a>
-  <a href="#machines">MACHINES</a>
-  <a href="#about">ABOUT US</a>
-  <a href="#contact">CONTACT</a>
- </nav>
-</header>
-
-<section class="hero" id="home">
- <h1>ROAD CONSTRUCTION <span>EQUIPMENTS</span></h1>
- <p>
-  Quality road construction and paving equipment for infrastructure
-  projects. Explore the Jupiter machine range and enquire for details.
- </p>
-</section>
-
-<div class="filter-area" id="machines">
- <input type="text" id="searchBox" placeholder="Search machine model...">
- <div class="filters">
-  <button class="active" data-filter="all">ALL MACHINES</button>
-  <button data-filter="mini">MINI</button>
-  <button data-filter="compact">COMPACT</button>
-  <button data-filter="universal">UNIVERSAL</button>
-  <button data-filter="highway">HIGHWAY</button>
-  <button data-filter="special">SPECIAL</button>
- </div>
-</div>
-
-<main class="container" id="machineContainer"></main>
-
-<section class="container" id="about">
- <h2 class="class-heading">ABOUT JUPITER</h2>
- <p style="line-height:1.8;color:#555;padding:10px">
-  Jupiter Road Infratech Equipments is focused on road construction
-  and infrastructure equipment. Contact us for machine details,
-  product information and enquiries.
- </p>
-</section>
-
-<footer id="contact">
- <div class="footer-grid">
-  <div>
-   <h3>JUPITER</h3>
-   <p>Road Infratech Equipments</p>
-   <p>Road construction equipment solutions.</p>
-  </div>
-  <div>
-   <h3>CONTACT DETAILS</h3>
-   <p>Phone: +91-99099 75881</p>
-   <p>GSTIN: 24BASPS3109M1Z7</p>
-  </div>
-  <div>
-   <h3>ADDRESS</h3>
-   <p>No. 215, 2nd Floor, Mahadev Complex, Near Ramol Police Station, C.T.M.-Ramol Road, Ramol, Ahmedabad - 382449, Gujarat, India.</p>
-  </div>
- </div>
- <div class="footer-bottom">
-  © <span id="year"></span> JUPITER ROAD INFRATECH EQUIPMENTS. All Rights Reserved.
- </div>
-</footer>
-
-<script>
-const classes = [
- {
-  id:"mini",name:"MINI CLASS",
-  description:"Compact machines for repair work, cycle paths, footpaths, farm tracks, minor roads, parking lots, sports grounds, trenches, halls and landscaping."
- },
- {
-  id:"compact",name:"COMPACT CLASS",
-  description:"Compact and maneuverable machines for small and medium-sized jobs, city streets, combined foot and cycle paths, farm tracks and confined work areas."
- },
- {
-  id:"universal",name:"UNIVERSAL CLASS",
-  description:"Versatile and powerful machines for a wide range of applications, from highways to traffic circles, with optional high-compaction technology."
- },
- {
-  id:"highway",name:"HIGHWAY CLASS",
-  description:"Powerful machines for large-scale highway and demanding infrastructure projects, with wide paving widths and high laydown rates."
- },
- {
-  id:"special",name:"SPECIAL CLASS",
-  description:"Specialist paving applications, including thin overlay hot-on-hot paving, InLine Pave and material feeder solutions."
- }
-];
-
-const machines = [
- {name:"MINI 500",cls:"mini",power:"14 hp",basic:"2 ft 11 in",width:"5 ft 11 in",rate:"22 US t/hr"},
- {name:"MINI 502",cls:"mini",power:"14 hp",basic:"3 ft 2 in",width:"5 ft 11 in",rate:"22 US t/hr"},
- {name:"SUPER 700i",cls:"mini",power:"74 hp",basic:"4 ft 4 in",width:"10 ft 6 in",rate:"275 US t/hr"},
- {name:"SUPER 800-5 P",cls:"mini",power:"74 hp",basic:"4 ft 7 in",width:"11 ft 5 in",rate:"330 US t/hr"},
-
- {name:"SUPER 1300-3i",cls:"compact"},
-
- {name:"SUPER 1700-3i",cls:"universal"},
- {name:"SUPER 1703-3i",cls:"universal"},
-
- {name:"SUPER 2000-3i",cls:"highway"},
- {name:"SUPER 2003-3i",cls:"highway"},
- {name:"SUPER 2000-5 X",cls:"highway"},
- {name:"SUPER 2003-5 X",cls:"highway"},
- {name:"SUPER 2100-5 X",cls:"highway"},
- {name:"SUPER 3000-3i",cls:"highway"},
-
- {name:"SUPER 1800-5 X SprayJet",cls:"special"}
-];
-
-const container = document.getElementById("machineContainer");
-let currentFilter = "all";
-
-function safeText(value){
- return String(value || "").replace(/[&<>"']/g, c => ({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
-}
-
-function renderMachines(){
- container.innerHTML = "";
-
- classes.forEach(category=>{
-  if(currentFilter !== "all" && currentFilter !== category.id) return;
-
-  const matching = machines.filter(m=>m.cls===category.id);
-  const section = document.createElement("section");
-  section.className = "class-section";
-  section.innerHTML = `
-   <h2 class="class-heading">${category.name}</h2>
-   <p class="class-description">${category.description}</p>
-   <div class="machine-grid"></div>
-  `;
-
-  const grid = section.querySelector(".machine-grid");
-
-  matching.forEach(machine=>{
-   const index = machines.indexOf(machine);
-   const card = document.createElement("article");
-   card.className = "machine-card";
-   card.dataset.search = machine.name.toLowerCase();
-
-   card.innerHTML = `
-    <div class="machine-title">${safeText(machine.name)}</div>
-
-    <label class="machine-photo" for="photo-${index}">
-     <div class="photo-placeholder" id="placeholder-${index}">
-      <span class="camera">📷</span>
-      Upload Machine Photo
-     </div>
-     <img id="image-${index}" alt="${safeText(machine.name)}" style="display:none">
-     <span class="upload-label">UPLOAD PHOTO</span>
-    </label>
-    <input class="photo-input" type="file" id="photo-${index}" accept="image/*">
-
-    <div class="machine-details">
-     <div class="spec-title">TECHNICAL SPECIFICATIONS</div>
-     <table class="spec-table">
-      <tr><td>Machine Class</td><td>${category.name}</td></tr>
-      <tr><td>Nominal Output</td><td>${machine.power || "Confirm specification"}</td></tr>
-      <tr><td>Basic Width</td><td>${machine.basic || "Confirm specification"}</td></tr>
-      <tr><td>Paving Width Max.</td><td>${machine.width || "Confirm specification"}</td></tr>
-      <tr><td>Maximum Laydown Rate</td><td>${machine.rate || "Confirm specification"}</td></tr>
-     </table>
-
-     <div class="brochure">
-      <span style="color:#DC2626;font-weight:bold">▣ PDF Brochure:</span>
-      <a href="#" class="brochure-link">Add brochure link</a>
-     </div>
-
-     <div class="price">₹ Price on Request</div>
-
-     <div class="card-buttons">
-      <button class="edit-btn" onclick="editMachine(${index})">EDIT DETAILS</button>
-      <a class="whatsapp-btn" target="_blank"
-       href="https://wa.me/919909975881?text=${encodeURIComponent("Hello, I want details about "+machine.name)}">
-       WHATSAPP ENQUIRY
-      </a>
-     </div>
-    </div>
-   `;
-
-   grid.appendChild(card);
-
-   const fileInput = card.querySelector("input[type=file]");
-   fileInput.addEventListener("change",e=>{
-    const file=e.target.files[0];
-    if(!file)return;
-    if(!file.type.startsWith("image/")){
-     alert("Please select an image file.");
-     return;
-    }
-    const reader=new FileReader();
-    reader.onload=()=>{
-     const img=document.getElementById("image-"+index);
-     img.src=reader.result;
-     img.style.display="block";
-     document.getElementById("placeholder-"+index).style.display="none";
-     try{
-      localStorage.setItem("jupiterMachinePhoto"+index,reader.result);
-     }catch(error){
-      alert("Image is too large to save in this browser. Try a smaller image.");
-     }
-    };
-    reader.readAsDataURL(file);
-   });
-
-   const savedPhoto=localStorage.getItem("jupiterMachinePhoto"+index);
-   if(savedPhoto){
-    card.querySelector("img").src=savedPhoto;
-    card.querySelector("img").style.display="block";
-    card.querySelector(".photo-placeholder").style.display="none";
-   }
-
-   const brochureLink=card.querySelector(".brochure-link");
-   const savedBrochure=localStorage.getItem("jupiterBrochure"+index);
-   if(savedBrochure){
-    brochureLink.href=savedBrochure;
-    brochureLink.textContent="View PDF Brochure";
-    brochureLink.target="_blank";
-   }
-   brochureLink.addEventListener("click",e=>{
-    e.preventDefault();
-    const url=prompt("Enter PDF brochure URL:");
-    if(url){
-     localStorage.setItem("jupiterBrochure"+index,url);
-     brochureLink.href=url;
-     brochureLink.textContent="View PDF Brochure";
-     brochureLink.target="_blank";
-    }
-   });
-  });
-
-  container.appendChild(section);
- });
- applySearch();
-}
-
-function editMachine(index){
- const m=machines[index];
- const power=prompt("Nominal Output:",m.power||"");
- if(power===null)return;
- const basic=prompt("Basic Width:",m.basic||"");
- if(basic===null)return;
- const width=prompt("Maximum Paving Width:",m.width||"");
- if(width===null)return;
- const rate=prompt("Maximum Laydown Rate:",m.rate||"");
- if(rate===null)return;
- m.power=power;
- m.basic=basic;
- m.width=width;
- m.rate=rate;
- try{
-  localStorage.setItem("jupiterMachineSpecs",JSON.stringify(machines));
- }catch(e){}
- renderMachines();
-}
-
-function applySearch(){
- const query=document.getElementById("searchBox").value.toLowerCase();
- document.querySelectorAll(".machine-card").forEach(card=>{
-  card.style.display=card.dataset.search.includes(query)?"":"none";
- });
- document.querySelectorAll(".class-section").forEach(section=>{
-  const cards=section.querySelectorAll(".machine-card");
-  section.style.display=[...cards].some(card=>card.style.display!=="none")?"":"none";
- });
-}
-
-document.querySelectorAll(".filters button").forEach(button=>{
- button.addEventListener("click",()=>{
-  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");
-  currentFilter=button.dataset.filter;
-  renderMachines();
- });
-});
-
-document.getElementById("searchBox").addEventListener("input",applySearch);
-
-/* JUPITER LOGO UPLOAD */
-const logoInput=document.getElementById("logoInput");
-const logoPreview=document.getElementById("logoPreview");
-const logoPlaceholder=document.getElementById("logoPlaceholder");
-
-function showLogo(src){
- logoPreview.src=src;
- logoPreview.style.display="block";
- logoPlaceholder.style.display="none";
-}
-logoInput.addEventListener("change",e=>{
- const file=e.target.files[0];
- if(!file)return;
- if(!file.type.startsWith("image/")){
-  alert("Please select an image file.");
-  return;
- }
- const reader=new FileReader();
- reader.onload=()=>{
-  showLogo(reader.result);
-  try{
-   localStorage.setItem("jupiterLogo",reader.result);
-  }catch(error){
-   alert("Logo image is too large. Please select a smaller image.");
-  }
- };
- reader.readAsDataURL(file);
-});
-
-const savedLogo=localStorage.getItem("jupiterLogo");
-if(savedLogo)showLogo(savedLogo);
-
-/* EDITABLE COMPANY NAME */
-const companyName=document.getElementById("companyName");
-const savedName=localStorage.getItem("jupiterCompanyName");
-if(savedName)companyName.textContent=savedName;
-
-companyName.addEventListener("input",()=>{
- localStorage.setItem("jupiterCompanyName",companyName.textContent);
-});
-companyName.addEventListener("blur",()=>{
- companyName.textContent=companyName.textContent.trim() || "JUPITER ROAD INFRATECH EQUIPMENTS";
- localStorage.setItem("jupiterCompanyName",companyName.textContent);
-});
-
-document.getElementById("year").textContent=new Date().getFullYear();
-
-/* RESTORE EDITED MACHINE SPECS */
-try{
- const savedSpecs=JSON.parse(localStorage.getItem("jupiterMachineSpecs"));
- if(Array.isArray(savedSpecs) && savedSpecs.length===machines.length){
-  savedSpecs.forEach((saved,i)=>Object.assign(machines[i],saved));
- }
-}catch(e){}
-
-renderMachines();
-</script>
-</body>
-</html>
+    <!-- 1. MINI CLASS -->
+    <section class="class-section" id="mini">
+        <h2 class="class-title">Mini Class</h2>
