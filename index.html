@@ -6,356 +6,369 @@
     <title>Road Pavers - Jupiter Road Infratech Equipments</title>
     <style>
         :root {
-            --primary-red: #E30613;
-            --dark-black: #111111;
+            --wirtgen-dark: #2A3644; /* Original Wirtgen Slate Blue */
+            --wirtgen-accent: #E30613; /* Brand Red */
             --pure-white: #FFFFFF;
-            --gray-border: #E0E0E0;
-            --light-bg: #F9F9F9;
+            --light-gray: #F4F6F8;
+            --text-dark: #333333;
+            --border-color: #E2E8F0;
+            --filter-text: #5A6A7A;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Helvetica Neue", Arial, sans-serif;
         }
 
         body {
             background-color: var(--pure-white);
-            color: var(--dark-black);
-            line-height: 1.6;
+            color: var(--text-dark);
+            font-size: 14px;
         }
 
-        header {
-            border-bottom: 3px solid var(--primary-red);
-            background-color: var(--pure-white);
-            padding: 15px 5%;
+        /* Top Original Corporate Utility Bar */
+        .top-utility-bar {
+            background-color: var(--wirtgen-dark);
+            color: var(--pure-white);
+            padding: 12px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .logo-area {
+        .main-brand-container {
             display: flex;
             flex-direction: column;
         }
 
-        .brand-logo {
-            font-size: 38px;
+        .main-brand-title {
+            font-size: 32px;
             font-weight: 900;
-            letter-spacing: -1px;
-            color: var(--dark-black);
+            letter-spacing: -1.5px;
+            color: var(--pure-white);
+            line-height: 1;
         }
 
-        .brand-logo span {
-            color: var(--primary-red);
-            border-top: 4px solid var(--primary-red);
-            border-bottom: 4px solid var(--primary-red);
+        .main-brand-title span {
+            color: var(--wirtgen-accent);
+            border-top: 3px solid var(--wirtgen-accent);
+            border-bottom: 3px solid var(--wirtgen-accent);
             display: inline-block;
             line-height: 0.8;
-            padding: 2px 0;
+            padding: 1px 0;
         }
 
-        .company-title {
-            font-size: 14px;
+        .main-brand-sub {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #A0AEC0;
             font-weight: 700;
-            color: var(--primary-red);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
-        nav a {
+        .nav-links-right a {
+            color: #CBD5E0;
             text-decoration: none;
-            color: var(--dark-black);
-            font-weight: 600;
-            margin-left: 25px;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        .nav-links-right a:hover {
+            color: var(--pure-white);
+        }
+
+        /* Second Main Navigation Header Bar */
+        .main-nav-bar {
+            background-color: var(--wirtgen-dark);
+            padding: 15px 6%;
+            display: flex;
+            gap: 30px;
+            border-bottom: 4px solid var(--wirtgen-accent);
+        }
+
+        .main-nav-bar a {
+            color: var(--pure-white);
+            text-decoration: none;
             text-transform: uppercase;
-            font-size: 14px;
-            transition: color 0.3s;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.5px;
         }
 
-        nav a:hover {
-            color: var(--primary-red);
+        .main-nav-bar a:hover {
+            color: var(--wirtgen-accent);
         }
 
-        .hero-banner {
-            padding: 60px 5%;
-            text-align: center;
-            border-bottom: 1px solid var(--gray-border);
-            background: var(--pure-white);
-        }
-
-        .hero-banner h1 {
-            font-size: 42px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            color: var(--dark-black);
-        }
-
-        .hero-banner h1::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-red);
-            margin: 10px auto 0;
-        }
-
-        .hero-intro {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 16px;
-            color: #555;
-        }
-
-        .class-section {
-            padding: 60px 5% 20px;
+        /* Hero Layout Viewport */
+        .hero-layout-section {
+            padding: 50px 6% 30px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .class-title {
-            font-size: 28px;
-            color: var(--dark-black);
-            border-bottom: 2px solid var(--dark-black);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+        .breadcrumbs-path {
+            font-size: 12px;
+            color: #718096;
+            margin-bottom: 25px;
         }
 
-        .class-desc {
+        .breadcrumbs-path a {
+            color: #4A5568;
+            text-decoration: none;
+        }
+
+        .hero-layout-section h1 {
+            font-size: 36px;
+            font-weight: 300;
+            color: #1A202C;
+            margin-bottom: 25px;
+            text-transform: none;
+        }
+
+        .hero-layout-section h1::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--wirtgen-accent);
+            margin-top: 8px;
+        }
+
+        .hero-body-paragraph {
             font-size: 15px;
-            color: #666;
+            color: #4A5568;
+            max-width: 1000px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        /* Original Vögele Filtration Layout System */
+        .filter-panel-wrapper {
+            background-color: var(--light-gray);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 40px;
+        }
+
+        .filter-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #CBD5E0;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .filter-count-txt {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--wirtgen-dark);
+        }
+
+        .reset-filter-link {
+            color: var(--wirtgen-accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .filter-grid-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .filter-group-box h4 {
+            font-size: 13px;
+            color: var(--filter-text);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .checkbox-lbl-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .checkbox-lbl-item input {
+            margin-right: 8px;
+        }
+
+        .range-slider-item {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        /* Class Block Title Header Styles */
+        .class-header-block {
+            margin: 50px 0 25px;
+            border-bottom: 2px solid var(--wirtgen-dark);
+            padding-bottom: 8px;
+        }
+
+        .class-header-block h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--wirtgen-dark);
+        }
+
+        .class-block-intro {
+            font-size: 14px;
+            color: #718096;
             margin-bottom: 30px;
             max-width: 1100px;
+            line-height: 1.6;
         }
 
-        .machine-grid {
+        /* Master Catalog Cards Grid Engine (14 Products) */
+        .products-catalog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
 
-        .machine-card {
-            border: 1px solid var(--gray-border);
+        .product-specification-card {
+            border: 1px solid var(--border-color);
             background-color: var(--pure-white);
-            padding: 25px;
-            border-top: 4px solid var(--dark-black);
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            position: relative;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: box-shadow 0.2s;
         }
 
-        .machine-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-red);
+        .product-specification-card:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .image-container {
+        .card-compare-row {
+            font-size: 12px;
+            color: #718096;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-compare-row input {
+            margin-right: 6px;
+        }
+
+        /* Image Shell Engine */
+        .card-photo-shell {
             width: 100%;
-            height: 180px;
+            height: 160px;
+            background-color: #FAFAFA;
+            border: 1px dashed #CBD5E0;
+            margin-bottom: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #fcfcfc;
-            border: 1px dashed #ccc;
-            margin-bottom: 20px;
             position: relative;
             overflow: hidden;
         }
 
-        .image-container img {
+        .card-photo-shell img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
 
-        .upload-btn-wrapper {
+        .photo-uploader-trigger {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        .btn-upload {
-            border: 1px solid var(--dark-black);
-            color: var(--dark-black);
+            bottom: 8px;
+            right: 8px;
             background-color: var(--pure-white);
-            padding: 5px 10px;
-            font-size: 11px;
-            font-weight: bold;
-            cursor: pointer;
+            border: 1px solid var(--wirtgen-dark);
+            color: var(--wirtgen-dark);
+            font-size: 10px;
+            padding: 4px 8px;
+            font-weight: 700;
             text-transform: uppercase;
-        }
-
-        .upload-btn-wrapper input[type=file] {
-            font-size: 100px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
             cursor: pointer;
         }
 
-        .machine-name {
+        .photo-uploader-trigger input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .product-headline-title {
             font-size: 18px;
-            font-weight: 800;
-            color: var(--dark-black);
+            font-weight: 700;
+            color: var(--wirtgen-dark);
             margin-bottom: 15px;
             text-transform: uppercase;
             border: 1px solid transparent;
         }
 
-        .spec-table {
+        /* Metrics Specification Presentation Grid */
+        .metrics-specs-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
             flex-grow: 1;
         }
 
-        .spec-table td {
-            padding: 6px 0;
-            font-size: 14px;
-            border-bottom: 1px solid #f0f0f0;
+        .metrics-specs-table td {
+            padding: 7px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #EDF2F7;
         }
 
-        .spec-label {
-            color: #777;
+        .metric-label-txt {
+            color: #718096;
         }
 
-        .spec-value {
+        .metric-value-txt {
             text-align: right;
             font-weight: 600;
-            color: var(--dark-black);
+            color: #2D3748;
             border: 1px solid transparent;
         }
 
-        .btn-group {
-            display: flex;
+        /* Modular Action Panel Grid Layout */
+        .card-action-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
             margin-top: auto;
         }
 
-        .edit-action-btn {
-            flex: 1;
-            background-color: var(--dark-black);
-            color: var(--pure-white);
+        .action-edit-trigger {
+            background-color: #E2E8F0;
+            color: var(--wirtgen-dark);
             border: none;
             padding: 10px;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             cursor: pointer;
-            font-size: 12px;
             letter-spacing: 0.5px;
-            transition: background-color 0.3s;
             text-align: center;
         }
 
-        .edit-action-btn:hover {
-            background-color: var(--primary-red);
+        .action-edit-trigger:hover {
+            background-color: #CBD5E0;
         }
 
-        .quote-btn {
-            flex: 1;
-            background-color: var(--primary-red);
+        .action-quote-trigger {
+            background-color: var(--wirtgen-accent);
             color: var(--pure-white);
             border: none;
             padding: 10px;
+            font-size: 11px;
             font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            transition: opacity 0.3s;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        .quote-btn:hover {
-            opacity: 0.9;
-        }
-
-        [contenteditable="true"] {
-            border: 1px dashed var(--primary-red) !important;
-            padding: 2px;
-            background-color: #fff9f9;
-            outline: none;
-        }
-
-        footer {
-            background-color: var(--dark-black);
-            color: var(--pure-white);
-            padding: 50px 5% 30px;
-            margin-top: 60px;
-            border-top: 5px solid var(--primary-red);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-col h3 {
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            color: var(--pure-white);
-            border-left: 3px solid var(--primary-red);
-            padding-left: 10px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #aaa;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #222;
-            font-size: 13px;
-            color: #777;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo-area">
-            <div class="brand-logo">JUPI<span>T☰</span>R</div>
-            <div class="company-title">Jupiter Road Infratech Equipments</div>
-        </div>
-        <nav>
-            <a href="#mini">Mini Class</a>
-            <a href="#compact">Compact Class</a>
-            <a href="#universal">Universal Class</a>
-            <a href="#highway">Highway Class</a>
-            <a href="#special">Special Class</a>
-        </nav>
-    </header>
-
-    <section class="hero-banner">
-        <h1>The right paver for every application</h1>
-        <p class="hero-intro">The extensive portfolio of JUPITER pavers is subdivided into five product classes: the Mini, Compact, Universal, Highway, and Special Class. These cover a range of pave widths from 25 cm to 18 m. The road pavers of all five classes offer a variety of characteristic equipment options and screeds. Thanks to this, they ideally fulfill the needs of customers on construction projects around the globe.</p>
-    </section>
-
-    <!-- 1. MINI CLASS -->
-    <section class="class-section" id="mini">
-        <h2 class="class-title">Mini Class</h2>
